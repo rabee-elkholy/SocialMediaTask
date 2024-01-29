@@ -64,7 +64,6 @@ class PostsFragment : Fragment() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 mViewModel.state.collect {
-                    Log.d("TAG", "getPosts: it = ")
 
                     if (it.isLoading) showShimmer() else hideShimmer()
                     if (it.error.isNotEmpty()) Helper.showErrorDialog(requireContext(), desc = it.error)
