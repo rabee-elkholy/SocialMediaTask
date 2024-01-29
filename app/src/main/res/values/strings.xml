@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Social Media Task</string>
+    <string name="no_connection">No Internet Connection!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search">Search for posts</string>
+    <string name="posts">Posts</string>
+    <string name="error">Error</string>
+    <string name="ok">Ok</string>
+    <string name="post_id">"Post id: "</string>
+
+</resources>
