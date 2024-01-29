@@ -1,6 +1,5 @@
 package com.androdu.socialmediatask.feature.posts_fragment
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.androdu.socialmediatask.domain.repository.PostsRepository
@@ -30,7 +29,7 @@ class PostsViewModel @Inject constructor(
 
     private fun getPosts() {
         viewModelScope.launch {
-            _state.value = _state.value.copy(isLoading = true)
+            _state.value = _state.value.copy(isLoading = true, error = "", posts = emptyList())
             val posts = postsRepository.getPosts()
             delay(500) // delay for shimmer animation
             _state.value = when (posts) {
@@ -39,7 +38,7 @@ class PostsViewModel @Inject constructor(
                 }
 
                 is ApiResult.Error -> {
-                    _state.value.copy(error = posts.message, isLoading = false)
+                    _state.value.copy(error = posts.message, isLoading = false, posts = emptyList())
                 }
             }
         }

@@ -29,7 +29,7 @@ class PostDetailsViewModel @Inject constructor(
 
     private fun getPost(postId:Int) {
         viewModelScope.launch {
-            _state.value = _state.value.copy(isLoading = true)
+            _state.value = _state.value.copy(isLoading = true, post = null, error = "")
             val posts = postsRepository.getPostDetails(postId = postId)
             delay(500) // delay for shimmer animation
             _state.value = when (posts) {
@@ -38,7 +38,7 @@ class PostDetailsViewModel @Inject constructor(
                 }
 
                 is ApiResult.Error -> {
-                    _state.value.copy(error = posts.message, isLoading = false)
+                    _state.value.copy(error = posts.message, isLoading = false, post = null)
                 }
             }
         }
